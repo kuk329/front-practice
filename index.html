@@ -5,16 +5,24 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
+    <link rel="stylesheet" href="main.css" />
   </head>
   <body>
-    <h1 id="hello">안녕하세요</h1>
-    <h1 id="hi">JS 초보에요</h1>
-    <h1 id="hello2">안녕하세요</h1>
+    <div class="alert-box" id="alert">
+      알림창임<button
+        onclick="document.getElementById('alert').style.display='none';"
+      >
+        닫기
+      </button>
+    </div>
+    <button onclick="document.getElementById('alert').style.display='block';">
+      버튼
+    </button>
 
     <script>
-      document.getElementById("hello").innerHTML = "안녕";
-      document.getElementById("hi").innerHTML = "JS 고수에요";
-      document.getElementById("hello2").style.fontSize = "15px";
+      // function alert_func() {
+      //   document.getElementById("alert").style.display = "block";
+      // }
     </script>
   </body>
 </html>
