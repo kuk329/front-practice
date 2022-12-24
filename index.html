@@ -9,15 +9,19 @@
   </head>
   <body>
     <div class="alert-box" id="alert">
-      알림창임<button onclick="알림창닫기()">닫기</button>
+      <p id="alert_content">알림창임</p>
+      <button onclick="close_alert()">닫기</button>
     </div>
-    <button onclick="알림창열기()">열기</button>
+    <button onclick="알림창('아이디를 입력하세요')">버튼1</button>
+    <button onclick="알림창('비번을 입력하세요')">버튼2</button>
 
     <script>
-      function 알림창열기() {
+      function 알림창(content) {
         document.getElementById("alert").style.display = "block";
+        document.getElementById("alert_content").innerHTML = content;
       }
-      function 알림창닫기() {
+
+      function close_alert() {
         document.getElementById("alert").style.display = "none";
       }
     </script>
