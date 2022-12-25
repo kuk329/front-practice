@@ -23,52 +23,22 @@
     <div class="black-bg">
       <div class="white-bg">
         <h4>로그인하세요</h4>
-        <button class="btn btn-danger" id="close">닫기</button>
+        <form action="success.html">
+          <div class="my-3">
+            <input type="text" id="id" class="form-control" />
+          </div>
+          <div class="my-3">
+            <input type="password" class="form-control" id="pd" />
+          </div>
+          <button type="submit" class="btn btn-primary" id="send">전송</button>
+          <button type="button" class="btn btn-danger" id="close">닫기</button>
+        </form>
       </div>
     </div>
-    <button type="button" class="btn btn-primary">Primary</button>
-
-    <nav class="navbar navbar-light bg-light">
-      <div class="container-fluid">
-        <span class="navbar-brand">Navbar</span>
-        <button class="navbar-toggler" type="button">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-      </div>
-    </nav>
-
-    <ul class="list-group" id="test1">
-      <li class="list-group-item">An item</li>
-      <li class="list-group-item">A second item</li>
-      <li class="list-group-item">A third item</li>
-      <li class="list-group-item">A fourth item</li>
-      <li class="list-group-item">And a fifth one</li>
-    </ul>
-
-    <p class="hello">안녕</p>
 
     <button class="login">로그인</button>
 
     <script>
-      // document
-      //   .getElementsByClassName("navbar-toggler")[0]
-      //   .addEventListener("click", function () {
-      //     document
-      //       .getElementsByClassName("list-group")[0]
-      //       .classList.toggle("show");
-      //   });
-
-      document
-        .querySelector(".navbar-toggler")
-        .addEventListener("click", function () {
-          document.querySelector(".list-group").classList.toggle("show");
-        });
-
-      document.querySelectorAll(".list-group-item")[1];
-
-      $(".hello").html("바보");
-      $(".hello").css("color", "red");
-
       $(".login").on("click", function () {
         $(".black-bg").addClass("on");
       });
@@ -76,6 +46,26 @@
       $("#close").on("click", function () {
         $(".black-bg").removeClass("on");
       });
+
+      // 로그인
+      $("form").on("submit", function (e) {
+        var id = document.getElementById("id").value;
+        var pd = document.getElementById("pd").value;
+        if (id == "" || pd == "") {
+          e.preventDefault();
+          alert("아이디 또는 비밀번호를 입력하세요");
+        }
+        if (pd.length < 6) {
+          e.preventDefault();
+          alert("비밀번호를 6자리 이상 입력하세요");
+        }
+      });
+
+      if (1 == 3) {
+        console.log("맞아요1");
+      } else if (3 == 3) {
+        console.log("맞아요22");
+      }
     </script>
 
     <script
