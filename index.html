@@ -10,10 +10,10 @@
   <body>
     <div class="alert-box" id="alert">
       <p id="alert_content">알림창임</p>
-      <button onclick="close_alert()">닫기</button>
+      <button id="close">닫기</button>
     </div>
-    <button onclick="알림창('아이디를 입력하세요')">버튼1</button>
-    <button onclick="알림창('비번을 입력하세요')">버튼2</button>
+    <button onclick="알림창('아이디를 입력하세요')" class="btn">버튼1</button>
+    <button onclick="알림창('비번을 입력하세요')" class="btn">버튼2</button>
 
     <script>
       function 알림창(content) {
@@ -21,9 +21,17 @@
         document.getElementById("alert_content").innerHTML = content;
       }
 
-      function close_alert() {
-        document.getElementById("alert").style.display = "none";
-      }
+      // function close_alert() {
+      //   document.getElementById("alert").style.display = "none";
+      // }
+
+      document.getElementsByClassName("btn")[1].style.color = "red";
+
+      document
+        .getElementById("close")
+        .addEventListener("mouseover", function () { // 콜백함수
+          document.getElementById("alert").style.display = "none";
+        });
     </script>
   </body>
 </html>
