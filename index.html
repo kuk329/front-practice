@@ -40,6 +40,8 @@
     <button class="slide-1">1</button>
     <button class="slide-2">2</button>
     <button class="slide-3">3</button>
+    <button class="before">이전</button>
+    <button class="next">다음</button>
 
     <script>
       // $(".slide-2").on("click", function () {
@@ -59,6 +61,31 @@
       document.querySelector(".slide-3").addEventListener("click", function () {
         document.querySelector(".slide-container").style.transform =
           "translate(-200vw)";
+      });
+      let count = 0;
+      document.querySelector(".next").addEventListener("click", function () {
+        count -= 100;
+        if (count >= -200) {
+          document.querySelector(".slide-container").style.transform =
+            "translate(" + count + "vw)";
+        } else {
+          count = -200;
+          document.querySelector(".slide-container").style.transform =
+            "translate(" + count + "vw)";
+        }
+        console.log(count);
+      });
+
+      document.querySelector(".before").addEventListener("click", function () {
+        count += 100;
+        if (count <= 0) {
+          document.querySelector(".slide-container").style.transform =
+            "translate(" + count + "vw)";
+        } else {
+          count = 0;
+          document.querySelector(".slide-container").style.transform =
+            "translate(" + count + "vw)";
+        }
       });
     </script>
 
