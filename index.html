@@ -18,41 +18,47 @@
     ></script>
   </head>
   <body>
-    <h1>Hello, world!</h1>
+    <div class="main-bg">
+      <h4>Shirts on Sale</h4>
+      <button id="login" class="btn btn-danger">로그인</button>
+    </div>
 
-    <div class="alert alert-danger">5초 이내 구매시 사은품 증정!</div>
+    <div style="overflow: hidden">
+      <div class="slide-container">
+        <div class="slide-box">
+          <img src="car1.png" />
+        </div>
+        <div class="slide-box">
+          <img src="car2.png" />
+        </div>
+        <div class="slide-box">
+          <img src="car3.png" />
+        </div>
+      </div>
+    </div>
+
+    <button class="slide-1">1</button>
+    <button class="slide-2">2</button>
+    <button class="slide-3">3</button>
 
     <script>
-      var count = 5;
+      // $(".slide-2").on("click", function () {
+      //   $(".slide-container").css("transform", "translateX(-100vw)");
+      // });
 
-      // setTimeout(function () {
-      //   document.querySelector(".alert").style.display = "none";
-      //   //   $(".alert").hide();
-      // }, 5000);
-
-      setInterval(function () {
-        count--;
-        if (count >= 0) {
-          document.querySelector(".alert").innerHTML =
-            count + "초 이내 구매시 사은품 증정!";
-        } else {
-          $(".alert").hide();
-        }
-      }, 1000);
-
-      $("form").on("submit", function (e) {
-        var 입력한값 = document.getElementById("email").value;
-        if (/\S+@\S+\.\S+/.test(입력한값)) {
-          alert("이메일형식아님");
-          e.preventDefault();
-        }
+      document.querySelector(".slide-1").addEventListener("click", function () {
+        document.querySelector(".slide-container").style.transform =
+          "translate(0)";
       });
 
-      $("form").on("submit", function (e) {
-        var 비번 = document.getElementById("pw").value;
-        if (/[A-Z]/.test(비번) == false) {
-          alert("대문자없는데요");
-        }
+      document.querySelector(".slide-2").addEventListener("click", function () {
+        document.querySelector(".slide-container").style.transform =
+          "translate(-100vw)";
+      });
+
+      document.querySelector(".slide-3").addEventListener("click", function () {
+        document.querySelector(".slide-container").style.transform =
+          "translate(-200vw)";
       });
     </script>
 
