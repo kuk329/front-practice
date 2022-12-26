@@ -20,20 +20,25 @@
   <body>
     <h1>Hello, world!</h1>
 
-    <span class="badge bg-dark">Dark 🔄</span>
+    <div class="alert alert-danger">5초 이내 구매시 사은품 증정!</div>
 
     <script>
-      var count = 0;
-      $(".badge").on("click", function () {
-        count++;
-        if (count % 2 == 0) {
-          // 짝수
-          document.querySelector(".badge").innerHTML = "Dark 🔄";
+      var count = 5;
+
+      // setTimeout(function () {
+      //   document.querySelector(".alert").style.display = "none";
+      //   //   $(".alert").hide();
+      // }, 5000);
+
+      setInterval(function () {
+        count--;
+        if (count >= 0) {
+          document.querySelector(".alert").innerHTML =
+            count + "초 이내 구매시 사은품 증정!";
         } else {
-          // 홀수
-          document.querySelector(".badge").innerHTML = "Light 🔄";
+          $(".alert").hide();
         }
-      });
+      }, 1000);
     </script>
 
     <script
