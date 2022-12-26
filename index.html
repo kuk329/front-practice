@@ -20,74 +20,20 @@
   <body>
     <h1>Hello, world!</h1>
 
-    <div class="black-bg">
-      <div class="white-bg">
-        <h4>로그인하세요</h4>
-        <form action="success.html">
-          <div class="my-3">
-            <input type="text" id="email" class="form-control" />
-          </div>
-          <div class="my-3">
-            <input type="password" class="form-control" id="pd" />
-          </div>
-          <button type="submit" class="btn btn-primary" id="send">전송</button>
-          <button type="button" class="btn btn-danger" id="close">닫기</button>
-        </form>
-      </div>
-    </div>
-
-    <button class="login">로그인</button>
+    <span class="badge bg-dark">Dark 🔄</span>
 
     <script>
-      $(".login").on("click", function () {
-        $(".black-bg").addClass("on");
-      });
-
-      $("#close").on("click", function () {
-        $(".black-bg").removeClass("on");
-      });
-
-      document.getElementById("email").addEventListener("change", function () {
-        var content = document.getElementById("email").value;
-        console.log(content);
-      });
-
-      function 삼육구게임(x) {
-        if (x % 9 == 0) {
-          console.log("박수x2");
-        } else if (x % 3 == 0) {
-          console.log("박수");
+      var count = 0;
+      $(".badge").on("click", function () {
+        count++;
+        if (count % 2 == 0) {
+          // 짝수
+          document.querySelector(".badge").innerHTML = "Dark 🔄";
         } else {
-          console.log("통과");
+          // 홀수
+          document.querySelector(".badge").innerHTML = "Light 🔄";
         }
-      }
-
-      function 합격했냐(x, y) {
-        if (x >= 40 && y >= 40) {
-          if (x + y >= 120) {
-            console.log("합격");
-          } else {
-            console.log("불합격");
-          }
-        } else {
-          console.log("불합격");
-        }
-      }
-
-      function clap(num) {
-        var remain = num % 10;
-        if (remain == 3 || remain == 6 || remain == 9) {
-          console.log("박수");
-        } else {
-          console.log("꽝");
-        }
-      }
-
-      function success(num) {
-        if (num < 0 || num > 100) {
-          alert("똑바로 입력하세요");
-        }
-      }
+      });
     </script>
 
     <script
