@@ -18,7 +18,7 @@
     ></script>
   </head>
   <body>
-    <nav class="navbar navbar-light bg-light">
+    <!-- <nav class="navbar navbar-light bg-light">
       <div class="container-fluid">
         <span class="navbar-brand">JSShop</span>
         <span class="ms-auto mx-3 badge bg-dark">Dark 💫</span>
@@ -26,14 +26,25 @@
           <span class="navbar-toggler-icon"></span>
         </button>
       </div>
-    </nav>
+    </nav> -->
 
-    <div class="main-bg">
-      <h4>Shirts on Sale</h4>
-      <button id="login" class="btn btn-danger">로그인</button>
+    <div class="black-bg">
+      <div class="white-bg">
+        <h4>로그인하세요</h4>
+        <form action="success.html">
+          <div class="my-3">
+            <input type="text" id="id" class="form-control" />
+          </div>
+          <div class="my-3">
+            <input type="password" class="form-control" id="pd" />
+          </div>
+          <button type="submit" class="btn btn-primary" id="send">전송</button>
+          <button type="button" class="btn btn-danger" id="close">닫기</button>
+        </form>
+      </div>
     </div>
-
-    <div style="overflow: hidden">
+    <button class="login">로그인</button>
+    <!-- <div style="overflow: hidden">
       <div class="slide-container">
         <div class="slide-box">
           <img src="car1.png" />
@@ -50,43 +61,75 @@
     <button class="slide-2">2</button>
     <button class="slide-3">3</button>
     <button class="before">이전</button>
-    <button class="next">다음</button>
+    <button class="next">다음</button> -->
 
-    <div class="lorem" style="width: 200px; height: 100px; overflow-y: scroll">
+    <!-- <div class="lorem" style="width: 200px; height: 100px; overflow-y: scroll">
       Lorem ipsum dolor sit amet consectetur adipisicing elit. Earum consequatur
       excepturi saepe nisi? Eaque sit natus fugiat odio reprehenderit
       perspiciatis beatae veniam eligendi debitis. Atque eius delectus quam
       quibusdam a.
     </div>
 
-    <div style="height: 1000px"></div>
+    <div style="height: 1000px"></div> -->
 
     <script>
-      window.addEventListener("scroll", function () {
-        // console.log(window.scrollY);
-        //       window.scrollBy(0, 100);
-        var scrollHeight = window.scrollY;
-        if (scrollHeight > 100) {
-          document.querySelector(".navbar-brand").style.fontSize = "20px";
-        } else {
-          document.querySelector(".navbar-brand").style.fontSize = "30px";
+      document
+        .querySelector(".black-bg")
+        .addEventListener("click", function (e) {
+          console.log(e.target); // 유저가 실제로 누름것.
+          console.log(e.currentTarget); // 이벤트리스너 달린 곳
+          // 모달창 닫기
+          if (e.target == e.currentTarget) {
+            document.querySelector(".black-bg").classList.remove("on");
+          }
+        });
+      $(".login").on("click", function () {
+        $(".black-bg").addClass("on");
+      });
+
+      $("#close").on("click", function () {
+        $(".black-bg").removeClass("on");
+      });
+
+      // 로그인
+      $("form").on("submit", function (e) {
+        var id = document.getElementById("id").value;
+        var pd = document.getElementById("pd").value;
+        if (id == "" || pd == "") {
+          e.preventDefault();
+          alert("아이디 또는 비밀번호를 입력하세요");
+        }
+        if (pd.length < 6) {
+          e.preventDefault();
+          alert("비밀번호를 6자리 이상 입력하세요");
         }
       });
 
-      // $(window).on("scroll", function () {
-      //   console.log($(window).scrollTop());
+      // window.addEventListener("scroll", function () {
+      //   // console.log(window.scrollY);
+      //   //       window.scrollBy(0, 100);
+      //   var scrollHeight = window.scrollY;
+      //   if (scrollHeight > 100) {
+      //     document.querySelector(".navbar-brand").style.fontSize = "20px";
+      //   } else {
+      //     document.querySelector(".navbar-brand").style.fontSize = "30px";
+      //   }
       // });
 
-      document.querySelector(".lorem").addEventListener("scroll", function () {
-        // div의 스크롤바 내린 양 +  눈에 보이는 div 높이 == div 의 실제 높이
-        var 스크롤양 = document.querySelector(".lorem").scrollTop;
-        var 스크롤크기 = document.querySelector(".lorem").scrollHeight;
-        var 높이 = document.querySelector(".lorem").clientHeight;
-        console.log(스크롤양, 스크롤크기);
-        if (스크롤양 + 높이 >= 스크롤크기) {
-          alert("finish");
-        }
-      });
+      // // $(window).on("scroll", function () {
+      // //   console.log($(window).scrollTop());
+      // // });
+
+      // document.querySelector(".lorem").addEventListener("scroll", function () {
+      //   // div의 스크롤바 내린 양 +  눈에 보이는 div 높이 == div 의 실제 높이
+      //   var 스크롤양 = document.querySelector(".lorem").scrollTop;
+      //   var 스크롤크기 = document.querySelector(".lorem").scrollHeight;
+      //   var 높이 = document.querySelector(".lorem").clientHeight;
+      //   console.log(스크롤양, 스크롤크기);
+      //   if (스크롤양 + 높이 >= 스크롤크기) {
+      //     alert("finish");
+      //   }
+      // });
     </script>
 
     <script
