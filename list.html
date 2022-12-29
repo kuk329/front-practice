@@ -16,7 +16,7 @@
       integrity="sha256-pvPw+upLPUjgMXY0G+8O0xUf+/Im1MZjXxxgOcBQBXU="
       crossorigin="anonymous"
     ></script>
-    <script defer src="tab.js"></script>
+    <!-- <script defer src="tab.js"></script> -->
   </head>
   <body>
     <div class="container">
@@ -30,6 +30,11 @@
     </div>
     <div class="container">
       <button class="btn btn-danger" id="more">더보기</button>
+      <button class="btn btn-danger" id="sort">가격순 정렬</button>
+      <button class="btn btn-danger" id="title_sort">제목순 정렬</button>
+      <button class="btn btn-danger" id="price_filter">
+        6만원 이하 상품만 보기
+      </button>
     </div>
 
     <script>
@@ -39,47 +44,133 @@
         { id: 2, price: 60000, title: "Black Monastery" },
       ];
 
-      let count = 0;
-      document.querySelector("#more").addEventListener("click", function () {
-        count++;
-        if (count == 1) {
-          document.querySelector("#more").style.display = "block";
-          $.get("https://codingapple1.github.io/js/more1.json").done(function (
-            data
-          ) {
-            getData(data);
-          });
-        } else if (count == 2) {
-          document.querySelector("#more").style.display = "block";
-          $.get("https://codingapple1.github.io/js/more2.json").done(function (
-            data
-          ) {
-            getData(data);
-          });
-        } else {
-          document.querySelector("#more").style.display = "none";
-        }
+      var arr = [7, 3, 5, 2, 4, 10];
+      arr.sort(); // 문자 정렬
+      arr.sort(function (a, b) {
+        // 숫자 정렬
+        //  return a - b;
+        return b - a; // 역순 정렬
       });
+      console.log(arr);
+
+      var arr2 = ["a", "c", "b"];
+      arr2.sort();
+      console.log(arr2);
+
+      document.querySelector("#sort").addEventListener("click", function () {
+        document.querySelector(".row").innerHTML = "";
+        products.sort(function (a, b) {
+          return a.price - b.price;
+        });
+        products.forEach((a) => {
+          var 템플릿 = ` <div class="col-sm-4">
+            <img src="https://via.placeholder.com/600" class="w-100" />
+            <h5>${a.title}</h5>
+            <p>가격 : ${a.price}</p>
+          </div>`;
+          $(".row").append(템플릿);
+        });
+      });
+
+      document
+        .querySelector("#title_sort")
+        .addEventListener("click", function () {
+          document.querySelector(".row").innerHTML = "";
+          products.sort(function (a, b) {
+            if (a.title > b.title) {
+              return 1;
+            } else {
+              return -1;
+            }
+          });
+          products.forEach((a) => {
+            var 템플릿 = ` <div class="col-sm-4">
+            <img src="https://via.placeholder.com/600" class="w-100" />
+            <h5>${a.title}</h5>
+            <p>가격 : ${a.price}</p>
+          </div>`;
+            $(".row").append(템플릿);
+          });
+        });
+
+      document
+        .querySelector("#price_filter")
+        .addEventListener("click", function () {
+          document.querySelector(".row").innerHTML = "";
+          var newProducts = products.filter(function (x) {
+            return x.price <= 60000;
+          });
+
+          newProducts.forEach((a) => {
+            var 템플릿 = ` <div class="col-sm-4">
+            <img src="https://via.placeholder.com/600" class="w-100" />
+            <h5>${a.title}</h5>
+            <p>가격 : ${a.price}</p>
+          </div>`;
+            $(".row").append(템플릿);
+          });
+        });
 
       products.forEach((a) => {
         var 템플릿 = ` <div class="col-sm-4">
-          <img src="https://via.placeholder.com/600" class="w-100" />
-          <h5>${a.title}</h5>
-          <p>가격 : ${a.price}</p>
-        </div>`;
+            <img src="https://via.placeholder.com/600" class="w-100" />
+            <h5>${a.title}</h5>
+            <p>가격 : ${a.price}</p>
+          </div>`;
         $(".row").append(템플릿);
       });
 
-      function getData(data) {
-        data.forEach((item) => {
-          var 템플릿 = ` <div class="col-sm-4">
-          <img src="https://via.placeholder.com/600" class="w-100" />
-          <h5>${item.title}</h5>
-          <p>가격 : ${item.price}</p>
-        </div>`;
-          $(".row").append(템플릿);
-        });
-      }
+      var arr3 = [7, 3, 5, 2, 40];
+      var newArr = arr3.filter(function (a) {
+        return a < 4;
+      });
+
+      var newArr2 = arr3.map(function (a) {
+        return a * 4;
+      });
+      console.log(newArr);
+      console.log(newArr2);
+      //   let count = 0;
+      //   document.querySelector("#more").addEventListener("click", function () {
+      //     count++;
+      //     if (count == 1) {
+      //       document.querySelector("#more").style.display = "block";
+      //       $.get("https://codingapple1.github.io/js/more1.json").done(function (
+      //         data
+      //       ) {
+      //         getData(data);
+      //       });
+      //     } else if (count == 2) {
+      //       document.querySelector("#more").style.display = "block";
+      //       $.get("https://codingapple1.github.io/js/more2.json").done(function (
+      //         data
+      //       ) {
+      //         getData(data);
+      //       });
+      //     } else {
+      //       document.querySelector("#more").style.display = "none";
+      //     }
+      //   });
+
+      //   products.forEach((a) => {
+      //     var 템플릿 = ` <div class="col-sm-4">
+      //         <img src="https://via.placeholder.com/600" class="w-100" />
+      //         <h5>${a.title}</h5>
+      //         <p>가격 : ${a.price}</p>
+      //       </div>`;
+      //     $(".row").append(템플릿);
+      //   });
+
+      //   function getData(data) {
+      //     data.forEach((item) => {
+      //       var 템플릿 = ` <div class="col-sm-4">
+      //         <img src="https://via.placeholder.com/600" class="w-100" />
+      //         <h5>${item.title}</h5>
+      //         <p>가격 : ${item.price}</p>
+      //       </div>`;
+      //       $(".row").append(템플릿);
+      //     });
+      //   }
     </script>
     <script
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
