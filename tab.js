@@ -7,28 +7,89 @@
 // -모든 div에 붙은 show 클래스명 제거
 // div 0에 show 클래스명 추가
 
-document
-  .querySelectorAll(".tab-button")[0]
-  .addEventListener("click", function () {
-    var buttonList = document.querySelectorAll(".tab-button");
-    var divList = document.querySelectorAll(".tab-content");
-    var i = 0;
-    var j = 0;
-    for (i = 0; i < buttonList.length; i++) {
-      buttonList[i].classList.remove("orange");
-    }
+var buttonList = document.querySelectorAll(".tab-button");
+var divList = document.querySelectorAll(".tab-content");
 
-    document.querySelectorAll(".tab-button")[0].classList.add("orange");
+for (let x = 0; x < buttonList.length; x++) {
+  document
+    .querySelectorAll(".tab-button")
+    [x].addEventListener("click", function () {
+      var buttonList = document.querySelectorAll(".tab-button");
+      var divList = document.querySelectorAll(".tab-content");
+      var i = 0;
+      var j = 0;
+      for (i = 0; i < buttonList.length; i++) {
+        buttonList[i].classList.remove("orange");
+      }
 
-    for (j = 0; j < divList.length; j++) {
-      divList[j].classList.remove("show");
-    }
-    document.querySelectorAll(".tab-content")[0].classList.add("show");
-  });
+      document.querySelectorAll(".tab-button")[x].classList.add("orange");
+
+      for (j = 0; j < divList.length; j++) {
+        divList[j].classList.remove("show");
+      }
+      document.querySelectorAll(".tab-content")[x].classList.add("show");
+    });
+}
+// document
+//   .querySelectorAll(".tab-button")[0]
+//   .addEventListener("click", function () {
+//     var buttonList = document.querySelectorAll(".tab-button");
+//     var divList = document.querySelectorAll(".tab-content");
+//     var i = 0;
+//     var j = 0;
+//     for (i = 0; i < buttonList.length; i++) {
+//       buttonList[i].classList.remove("orange");
+//     }
+
+//     document.querySelectorAll(".tab-button")[0].classList.add("orange");
+
+//     for (j = 0; j < divList.length; j++) {
+//       divList[j].classList.remove("show");
+//     }
+//     document.querySelectorAll(".tab-content")[0].classList.add("show");
+//   });
 
 // $(".tab-button")
 //   .eq(0)
 //   .on("click", function () {
 //     $(".tab-button").removeClass("orange");
 //     $(".tab-button").eq(0).addClass("orange");
+//     $(".tab-content").removeClass("show");
+//     $(".tab-content").eq(0).addClass("show");
+//   });
+
+// document
+//   .querySelectorAll(".tab-button")[1]
+//   .addEventListener("click", function () {
+//     var i = 0;
+//     var j = 0;
+//     for (i = 0; i < buttonList.length; i++) {
+//       buttonList[i].classList.remove("orange");
+//     }
+
+//     document.querySelectorAll(".tab-button")[1].classList.add("orange");
+
+//     for (j = 0; j < divList.length; j++) {
+//       divList[j].classList.remove("show");
+//     }
+//     document.querySelectorAll(".tab-content")[1].classList.add("show");
+//   });
+
+// document
+//   .querySelectorAll(".tab-button")[2]
+//   .addEventListener("click", function () {
+//     var buttonList = document.querySelectorAll(".tab-button");
+//     var divList = document.querySelectorAll(".tab-content");
+//     var i = 0;
+//     var j = 0;
+//     for (i = 0; i < buttonList.length; i++) {
+//       buttonList[i].classList.remove("orange");
+//     }
+
+//     document.querySelectorAll(".tab-button")[2].classList.add("orange");
+
+//     for (j = 0; j < divList.length; j++) {
+//       divList[j].classList.remove("show");
+//     }
+//     document.querySelectorAll(".tab-content")[2].classList.add("show");
 //   });
