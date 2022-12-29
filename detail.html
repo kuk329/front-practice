@@ -43,6 +43,19 @@
       </div>
     </div>
 
+    <form class="container my-5 form-group">
+      <p>상품 선택</p>
+      <select class="form-select mt-2" id="product">
+        <option>모자</option>
+        <option>셔츠</option>
+      </select>
+
+      <select class="form-select mt-2 form-hide">
+        <option>90</option>
+        <option>100</option>
+      </select>
+    </form>
+
     <script>
       var car = ["소나타", 50000, "white"]; // 배열
       var car2 = { name: "소나타", price: [20000, 30000, 100] };
@@ -54,6 +67,20 @@
 
       document.querySelector(".car-title").innerHTML = car2.name;
       document.querySelector(".car-price").innerHTML = car2.price[1];
+
+      document
+        .querySelector("#product")
+        .addEventListener("change", function (e) {
+          var selected = document.querySelector(".form-select").value;
+          var target = e.currentTarget.value;
+          console.log(target);
+          console.log(selected);
+          if (selected == "셔츠") {
+            $(".form-select").eq(1).removeClass("form-hide");
+          } else {
+            $(".form-select").eq(1).addClass("form-hide");
+          }
+        });
     </script>
     <script
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
