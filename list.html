@@ -19,31 +19,17 @@
     <script defer src="tab.js"></script>
   </head>
   <body>
-    <div class="card-group container">
-      <div class="card">
-        <img src="https://via.placeholder.com/600" />
-        <div class="card-body">
+    <div class="container">
+      <div class="row">
+        <!-- <div class="col-sm-4">
+          <img src="https://via.placeholder.com/600" class="w-100" />
           <h5>Card title</h5>
           <p>가격 : 70000</p>
-          <button class="btn btn-danger">주문하기</button>
-        </div>
+        </div> -->
       </div>
-      <div class="card">
-        <img src="https://via.placeholder.com/600" />
-        <div class="card-body">
-          <h5>Card title</h5>
-          <p>가격 : 70000</p>
-          <button class="btn btn-danger">주문하기</button>
-        </div>
-      </div>
-      <div class="card">
-        <img src="https://via.placeholder.com/600" />
-        <div class="card-body">
-          <h5>Card title</h5>
-          <p>가격 : 70000</p>
-          <button class="btn btn-danger">주문하기</button>
-        </div>
-      </div>
+    </div>
+    <div class="container">
+      <button class="btn btn-danger" id="more">더보기</button>
     </div>
 
     <script>
@@ -53,12 +39,46 @@
         { id: 2, price: 60000, title: "Black Monastery" },
       ];
 
-      var titleList = document.querySelectorAll(".card-body h5");
-      var priceList = document.querySelectorAll(".card-body p");
+      let count = 0;
+      document.querySelector("#more").addEventListener("click", function () {
+        count++;
+        if (count == 1) {
+          document.querySelector("#more").style.display = "block";
+          $.get("https://codingapple1.github.io/js/more1.json").done(function (
+            data
+          ) {
+            getData(data);
+          });
+        } else if (count == 2) {
+          document.querySelector("#more").style.display = "block";
+          $.get("https://codingapple1.github.io/js/more2.json").done(function (
+            data
+          ) {
+            getData(data);
+          });
+        } else {
+          document.querySelector("#more").style.display = "none";
+        }
+      });
 
-      for (let i = 0; i < products.length; i++) {
-        titleList[i].innerHTML = products[i].title;
-        priceList[i].innerHTML = "가격 : " + products[i].price;
+      products.forEach((a) => {
+        var 템플릿 = ` <div class="col-sm-4">
+          <img src="https://via.placeholder.com/600" class="w-100" />
+          <h5>${a.title}</h5>
+          <p>가격 : ${a.price}</p>
+        </div>`;
+        $(".row").append(템플릿);
+      });
+
+      function getData(data) {
+        data.forEach((item) => {
+          var 템플릿 = ` <div class="col-sm-4">
+          <img src="https://via.placeholder.com/600" class="w-100" />
+          <h5>${item.title}</h5>
+          <p>가격 : ${item.price}</p>
+        </div>`;
+          $(".row").append(템플릿);
+        });
       }
     </script>
     <script
