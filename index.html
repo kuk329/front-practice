@@ -18,6 +18,16 @@
     ></script>
   </head>
   <body>
+    <nav class="navbar navbar-light bg-light">
+      <div class="container-fluid">
+        <span class="navbar-brand">JSShop</span>
+        <span class="ms-auto mx-3 badge bg-dark">Dark 💫</span>
+        <button class="navbar-toggler" type="button">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+      </div>
+    </nav>
+
     <div class="main-bg">
       <h4>Shirts on Sale</h4>
       <button id="login" class="btn btn-danger">로그인</button>
@@ -36,40 +46,47 @@
         </div>
       </div>
     </div>
-
     <button class="slide-1">1</button>
     <button class="slide-2">2</button>
     <button class="slide-3">3</button>
     <button class="before">이전</button>
     <button class="next">다음</button>
 
+    <div class="lorem" style="width: 200px; height: 100px; overflow-y: scroll">
+      Lorem ipsum dolor sit amet consectetur adipisicing elit. Earum consequatur
+      excepturi saepe nisi? Eaque sit natus fugiat odio reprehenderit
+      perspiciatis beatae veniam eligendi debitis. Atque eius delectus quam
+      quibusdam a.
+    </div>
+
+    <div style="height: 1000px"></div>
+
     <script>
-      console.log(vat(55555));
-
-      console.log(ms(1, 30));
-      console.log(ms(2, 10));
-
-      console.log(discount(70, false));
-      console.log(discount(10, true));
-
-      function vat(a) {
-        var num = (a * 1.1).toFixed(2); // 소수점 2째자리 까지 표시
-        return parseInt(num);
-      }
-
-      function ms(x, y) {
-        var ms = x * 60 + y;
-        return ms * 1000;
-      }
-
-      function discount(a, b) {
-        var price = parseFloat(a * 0.9);
-        if (b) {
-          return price - 1.5;
+      window.addEventListener("scroll", function () {
+        // console.log(window.scrollY);
+        //       window.scrollBy(0, 100);
+        var scrollHeight = window.scrollY;
+        if (scrollHeight > 100) {
+          document.querySelector(".navbar-brand").style.fontSize = "20px";
         } else {
-          return price;
+          document.querySelector(".navbar-brand").style.fontSize = "30px";
         }
-      }
+      });
+
+      // $(window).on("scroll", function () {
+      //   console.log($(window).scrollTop());
+      // });
+
+      document.querySelector(".lorem").addEventListener("scroll", function () {
+        // div의 스크롤바 내린 양 +  눈에 보이는 div 높이 == div 의 실제 높이
+        var 스크롤양 = document.querySelector(".lorem").scrollTop;
+        var 스크롤크기 = document.querySelector(".lorem").scrollHeight;
+        var 높이 = document.querySelector(".lorem").clientHeight;
+        console.log(스크롤양, 스크롤크기);
+        if (스크롤양 + 높이 == 스크롤크기) {
+          alert("finish");
+        }
+      });
     </script>
 
     <script
