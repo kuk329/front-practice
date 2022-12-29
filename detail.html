@@ -48,6 +48,7 @@
       <select class="form-select mt-2" id="product">
         <option>모자</option>
         <option>셔츠</option>
+        <option>바지</option>
       </select>
 
       <select class="form-select mt-2 form-hide">
@@ -56,17 +57,15 @@
       </select>
     </form>
 
-    <script>
-      var car = ["소나타", 50000, "white"]; // 배열
-      var car2 = { name: "소나타", price: [20000, 30000, 100] };
-      console.log(car2);
-      console.log(car2.price);
-      car[0] = "아반떼";
-      console.log(car[0]);
-      console.log(car[1]);
+    <div id="test"></div>
 
-      document.querySelector(".car-title").innerHTML = car2.name;
-      document.querySelector(".car-price").innerHTML = car2.price[1];
+    <script>
+      // var a = document.createElement("p");
+      // a.innerHTML = "안녕";
+      // document.querySelector("#test").appendChild(a);
+
+      var 템플릿 = "<p>Hello</p>";
+      document.querySelector("#test").insertAdjacentHTML("beforeend", 템플릿);
 
       document
         .querySelector("#product")
@@ -76,9 +75,25 @@
           console.log(target);
           console.log(selected);
           if (selected == "셔츠") {
-            $(".form-select").eq(1).removeClass("form-hide");
+            //  $(".form-select").eq(1).removeClass("form-hide");
+            document
+              .querySelectorAll(".form-select")[1]
+              .classList.remove("form-hide");
+          } else if (selected == "바지") {
+            document
+              .querySelectorAll(".form-select")[1]
+              .classList.remove("form-hide");
+            document.querySelectorAll(".form-select")[1].innerHTML = "";
+            var option = `<option>28</option>
+            <option>30</option>`;
+            document
+              .querySelectorAll(".form-select")[1]
+              .insertAdjacentHTML("beforeend", option);
           } else {
-            $(".form-select").eq(1).addClass("form-hide");
+            // $(".form-select").eq(1).addClass("form-hide");
+            document
+              .querySelectorAll(".form-select")[1]
+              .classList.add("form-hide");
           }
         });
     </script>
