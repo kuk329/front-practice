@@ -10,86 +10,42 @@
 var buttonList = document.querySelectorAll(".tab-button");
 var divList = document.querySelectorAll(".tab-content");
 
-for (let x = 0; x < buttonList.length; x++) {
-  document
-    .querySelectorAll(".tab-button")
-    [x].addEventListener("click", function () {
-      var buttonList = document.querySelectorAll(".tab-button");
-      var divList = document.querySelectorAll(".tab-content");
-      var i = 0;
-      var j = 0;
-      for (i = 0; i < buttonList.length; i++) {
-        buttonList[i].classList.remove("orange");
-      }
+// for (let x = 0; x < buttonList.length; x++) {
+//   document
+//     .querySelectorAll(".tab-button")
+//     [x].addEventListener("click", function () {
+//       tab_open(x);
+//     });
+// }
 
-      document.querySelectorAll(".tab-button")[x].classList.add("orange");
+var tab0 = document.querySelectorAll(".tab-button")[0];
+var tab1 = document.querySelectorAll(".tab-button")[1];
+var tab2 = document.querySelectorAll(".tab-button")[2];
 
-      for (j = 0; j < divList.length; j++) {
-        divList[j].classList.remove("show");
-      }
-      document.querySelectorAll(".tab-content")[x].classList.add("show");
-    });
+document.querySelector(".list").addEventListener("click", function (e) {
+  let target = e.target;
+  //   if (target == tab0) {
+  //     tab_open(0);
+  //   } else if (target == tab1) {
+  //     tab_open(1);
+  //   } else if (target == tab2) {
+  //     tab_open(2);
+  //   }
+  console.log(e.target.dataset.id);
+  tab_open(e.target.dataset.id);
+});
+
+function tab_open(idx) {
+  var i = 0;
+  var j = 0;
+  for (i = 0; i < buttonList.length; i++) {
+    buttonList[i].classList.remove("orange");
+  }
+
+  document.querySelectorAll(".tab-button")[idx].classList.add("orange");
+
+  for (j = 0; j < divList.length; j++) {
+    divList[j].classList.remove("show");
+  }
+  document.querySelectorAll(".tab-content")[idx].classList.add("show");
 }
-// document
-//   .querySelectorAll(".tab-button")[0]
-//   .addEventListener("click", function () {
-//     var buttonList = document.querySelectorAll(".tab-button");
-//     var divList = document.querySelectorAll(".tab-content");
-//     var i = 0;
-//     var j = 0;
-//     for (i = 0; i < buttonList.length; i++) {
-//       buttonList[i].classList.remove("orange");
-//     }
-
-//     document.querySelectorAll(".tab-button")[0].classList.add("orange");
-
-//     for (j = 0; j < divList.length; j++) {
-//       divList[j].classList.remove("show");
-//     }
-//     document.querySelectorAll(".tab-content")[0].classList.add("show");
-//   });
-
-// $(".tab-button")
-//   .eq(0)
-//   .on("click", function () {
-//     $(".tab-button").removeClass("orange");
-//     $(".tab-button").eq(0).addClass("orange");
-//     $(".tab-content").removeClass("show");
-//     $(".tab-content").eq(0).addClass("show");
-//   });
-
-// document
-//   .querySelectorAll(".tab-button")[1]
-//   .addEventListener("click", function () {
-//     var i = 0;
-//     var j = 0;
-//     for (i = 0; i < buttonList.length; i++) {
-//       buttonList[i].classList.remove("orange");
-//     }
-
-//     document.querySelectorAll(".tab-button")[1].classList.add("orange");
-
-//     for (j = 0; j < divList.length; j++) {
-//       divList[j].classList.remove("show");
-//     }
-//     document.querySelectorAll(".tab-content")[1].classList.add("show");
-//   });
-
-// document
-//   .querySelectorAll(".tab-button")[2]
-//   .addEventListener("click", function () {
-//     var buttonList = document.querySelectorAll(".tab-button");
-//     var divList = document.querySelectorAll(".tab-content");
-//     var i = 0;
-//     var j = 0;
-//     for (i = 0; i < buttonList.length; i++) {
-//       buttonList[i].classList.remove("orange");
-//     }
-
-//     document.querySelectorAll(".tab-button")[2].classList.add("orange");
-
-//     for (j = 0; j < divList.length; j++) {
-//       divList[j].classList.remove("show");
-//     }
-//     document.querySelectorAll(".tab-content")[2].classList.add("show");
-//   });
