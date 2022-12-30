@@ -45,7 +45,7 @@
 .slide-container {
   width: 300vw;
   /* margin-left: -200vw; */
-  transition: all 1s;
+  /* transition: all 1s; */
   /* transform: translateX(-100vw); */
 }
 

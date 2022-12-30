@@ -44,10 +44,10 @@
       </div>
     </div>
     <button class="login">로그인</button>
-    <!-- <div style="overflow: hidden">
+    <div style="overflow: hidden">
       <div class="slide-container">
         <div class="slide-box">
-          <img src="car1.png" />
+          <img src="car1.png" draggable="false" />
         </div>
         <div class="slide-box">
           <img src="car2.png" />
@@ -61,16 +61,16 @@
     <button class="slide-2">2</button>
     <button class="slide-3">3</button>
     <button class="before">이전</button>
-    <button class="next">다음</button> -->
+    <button class="next">다음</button>
 
-    <!-- <div class="lorem" style="width: 200px; height: 100px; overflow-y: scroll">
+    <div class="lorem" style="width: 200px; height: 100px; overflow-y: scroll">
       Lorem ipsum dolor sit amet consectetur adipisicing elit. Earum consequatur
       excepturi saepe nisi? Eaque sit natus fugiat odio reprehenderit
       perspiciatis beatae veniam eligendi debitis. Atque eius delectus quam
       quibusdam a.
     </div>
 
-    <div style="height: 1000px"></div> -->
+    <div style="height: 1000px"></div>
 
     <script>
       document
@@ -105,33 +105,71 @@
         }
       });
 
-      // window.addEventListener("scroll", function () {
-      //   // console.log(window.scrollY);
-      //   //       window.scrollBy(0, 100);
-      //   var scrollHeight = window.scrollY;
-      //   if (scrollHeight > 100) {
-      //     document.querySelector(".navbar-brand").style.fontSize = "20px";
-      //   } else {
-      //     document.querySelector(".navbar-brand").style.fontSize = "30px";
-      //   }
+      window.addEventListener("scroll", function () {
+        // console.log(window.scrollY);
+        //       window.scrollBy(0, 100);
+        var scrollHeight = window.scrollY;
+        if (scrollHeight > 100) {
+          document.querySelector(".navbar-brand").style.fontSize = "20px";
+        } else {
+          document.querySelector(".navbar-brand").style.fontSize = "30px";
+        }
+      });
+
+      // $(window).on("scroll", function () {
+      //   console.log($(window).scrollTop());
       // });
 
-      // // $(window).on("scroll", function () {
-      // //   console.log($(window).scrollTop());
-      // // });
-
-      // document.querySelector(".lorem").addEventListener("scroll", function () {
-      //   // div의 스크롤바 내린 양 +  눈에 보이는 div 높이 == div 의 실제 높이
-      //   var 스크롤양 = document.querySelector(".lorem").scrollTop;
-      //   var 스크롤크기 = document.querySelector(".lorem").scrollHeight;
-      //   var 높이 = document.querySelector(".lorem").clientHeight;
-      //   console.log(스크롤양, 스크롤크기);
-      //   if (스크롤양 + 높이 >= 스크롤크기) {
-      //     alert("finish");
-      //   }
-      // });
+      document.querySelector(".lorem").addEventListener("scroll", function () {
+        // div의 스크롤바 내린 양 +  눈에 보이는 div 높이 == div 의 실제 높이
+        var 스크롤양 = document.querySelector(".lorem").scrollTop;
+        var 스크롤크기 = document.querySelector(".lorem").scrollHeight;
+        var 높이 = document.querySelector(".lorem").clientHeight;
+        console.log(스크롤양, 스크롤크기);
+        if (스크롤양 + 높이 >= 스크롤크기) {
+          alert("finish");
+        }
+      });
     </script>
 
+    <script>
+      var 시작좌표 = 0;
+      var click = false;
+      $(".slide-box")
+        .eq(0)
+        .on("mousedown", function (e) {
+          console.log("mouse down");
+          시작좌표 = e.clientX;
+          click = true;
+        });
+
+      $(".slide-box")
+        .eq(0)
+        .on("mouseup", function (e) {
+          console.log("mouse up");
+          click = false;
+        });
+
+      $(".slide-box")
+        .eq(0)
+        .on("mousemove", function (e) {
+          console.log("mouse move");
+          var 현재좌표 = e.clientX - 시작좌표;
+          console.log(현재좌표);
+
+          if (click) {
+            document.querySelector(
+              ".slide-container"
+            ).style.transform = `translateX(${현재좌표}px)`;
+          }
+        });
+
+      // $(".slide-box")
+      //   .eq(0)
+      //   .on("mousemove", function (e) {
+      //     console.log(e.clientX);
+      //   });
+    </script>
     <script
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
       integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4"
