@@ -170,6 +170,13 @@
           });
       }
 
+      // jquery
+      $(".buy").click(function () {
+        var title = $(e.target).siblings("h5").text();
+      
+        localStorage.setItem("cart",  JSON.stringify([title]));
+      });
+
       //   let count = 0;
       //   document.querySelector("#more").addEventListener("click", function () {
       //     count++;
