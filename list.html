@@ -116,6 +116,7 @@
             <img src="https://via.placeholder.com/600" class="w-100" />
             <h5>${a.title}</h5>
             <p>가격 : ${a.price}</p>
+            <button class="buy">구매</button>
           </div>`;
         $(".row").append(템플릿);
       });
@@ -130,6 +131,45 @@
       });
       console.log(newArr);
       console.log(newArr2);
+
+      localStorage.setItem("이름", "kim");
+      console.log(localStorage.getItem("이름"));
+      localStorage.removeItem("이름");
+      //   localStorage.setItem("num", [1, 2, 3]);
+
+      var arr = [1, 2, 3];
+      var newArr = JSON.stringify(arr);
+      localStorage.setItem("num", newArr);
+      var 꺼낸거 = localStorage.getItem("num");
+      console.log(JSON.parse(꺼낸거)[1]);
+
+      // 구매 버튼 (localStorage)
+
+      let productArr = [];
+
+      for (var i = 0; i < products.length; i++) {
+        document
+          .querySelectorAll(".buy")
+          [i].addEventListener("click", function (e) {
+            // localStorage cart 가 있으면 꺼내고 없으면 새로 만들어서 추가하고 다시 저장
+            var check = localStorage.getItem("cart");
+            console.log(e.target);
+            var title =
+              e.target.previousElementSibling.previousElementSibling.innerHTML;
+            console.log(title);
+            productArr.push(title);
+
+            if (check == null) {
+              var newArr = JSON.stringify(productArr);
+              localStorage.setItem("cart", newArr);
+            } else {
+              var newArr = JSON.stringify(productArr);
+              localStorage.removeItem("cart");
+              localStorage.setItem("cart", newArr);
+            }
+          });
+      }
+
       //   let count = 0;
       //   document.querySelector("#more").addEventListener("click", function () {
       //     count++;

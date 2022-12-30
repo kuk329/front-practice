@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>장바구니</title>
+  </head>
+  <body>
+    <div class="item-list">
+      <h1>장바구니 페이지</h1>
+    </div>
+
+    <script>
+      var item = localStorage.getItem("cart");
+      var itemArr = JSON.parse(item);
+      itemArr.forEach((element) => {
+        console.log(element);
+        var 템플릿 = `<h4>${element}</h4>`;
+        document
+          .querySelector(".item-list")
+          .insertAdjacentHTML("beforeend", 템플릿);
+        // $(".item-list").append(템플릿);
+      });
+    </script>
+  </body>
+</html>
