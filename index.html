@@ -135,10 +135,11 @@
     <script>
       var 시작좌표 = 0;
       var click = false;
+      var 이동거리 = 0;
       $(".slide-box")
         .eq(0)
         .on("mousedown", function (e) {
-          console.log("mouse down");
+          //      console.log("mouse down");
           시작좌표 = e.clientX;
           click = true;
         });
@@ -146,21 +147,37 @@
       $(".slide-box")
         .eq(0)
         .on("mouseup", function (e) {
-          console.log("mouse up");
+          //      console.log("mouse up");
           click = false;
+          if (e.clientX - 시작좌표 < -100) {
+            document.querySelector(".slide-container").style.transition =
+              "all 0.5s";
+            document.querySelector(".slide-container").style.transform =
+              "translateX(-100vw)";
+          } else {
+            document.querySelector(".slide-container").style.transition =
+              "all 0.5s";
+            document.querySelector(".slide-container").style.transform =
+              "translateX(0vw)";
+          }
+
+          setTimeout(() => {
+            document.querySelector(".slide-container").style.transition =
+              "none";
+          }, 500);
         });
 
       $(".slide-box")
         .eq(0)
         .on("mousemove", function (e) {
-          console.log("mouse move");
-          var 현재좌표 = e.clientX - 시작좌표;
-          console.log(현재좌표);
+          //  console.log("mouse move");
+          이동거리 = e.clientX - 시작좌표;
+          //    console.log(이동거리);
 
           if (click) {
             document.querySelector(
               ".slide-container"
-            ).style.transform = `translateX(${현재좌표}px)`;
+            ).style.transform = `translateX(${이동거리}px)`;
           }
         });
 
